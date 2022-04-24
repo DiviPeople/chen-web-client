@@ -47,12 +47,7 @@ export default function Layout({ children }: LayoutProps): ReactElement {
   return (
     <Configuration icons={icons}>
       <RMDLayout
-        title="Main Title"
-        navHeaderTitle="Navigation Header Title"
-        tabletLayout="temporary"
-        landscapeTabletLayout="temporary"
-        desktopLayout="temporary"
-        largeDesktopLayout="temporary"
+        title="Dashboard"
         treeProps={useLayoutNavigation(navItems, pathname, LinkUnstyled)}
       >
         {children}

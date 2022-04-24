@@ -5,7 +5,7 @@ import { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import Favicon from "../components/Favicon/Favicon"
 
-import '../styles/app.scss'
+import '../../styles/app.scss'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (

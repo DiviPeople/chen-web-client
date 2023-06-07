@@ -1,3 +1,61 @@
+<script>
+  import {
+    Drawer,
+    Button,
+    CloseButton,
+    Label,
+    Input,
+    Checkbox,
+  } from 'flowbite-svelte'
+  import {sineIn} from 'svelte/easing'
+
+  let hidden3 = true
+  let transitionParams = {
+    x: -320,
+    duration: 200,
+    easing: sineIn,
+  }
+</script>
+
+<Drawer transitionType="fly" {transitionParams} bind:hidden={hidden3} id="sidebar3">
+  <div class="flex items-center">
+    <h5
+      id="drawer-label"
+      class="inline-flex items-center mb-6 text-base font-semibold text-gray-500 uppercase dark:text-gray-400">
+      <svg
+        class="w-5 h-5 mr-2"
+        aria-hidden="true"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"><path
+          fill-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          clip-rule="evenodd"/></svg>Create user</h5>
+
+    <CloseButton on:click={() => (hidden3 = true)} class="mb-4 dark:text-white"/>
+  </div>
+  <form method="POST" action="?/users" class="mb-6">
+    <div class="mb-6">
+      <Label class="block mb-2">Login</Label>
+      <Input type="text" name="login" required placeholder="d.ivanko"/>
+    </div>
+    <div class="mb-6">
+      <Label class="block mb-2">Email</Label>
+      <Input type="email" name="email" required placeholder="example@gmail.com"/>
+    </div>
+    <div class="mb-6">
+      <Label class="space-y-2">
+        <span>Role</span>
+        <ul
+          class="items-center w-full rounded-lg border border-zinc-800 sm:flex dark:bg-gray-600 dark:border-zinc-800 divide-x divide-zinc-800 dark:divide-zinc-800">
+          <li class="w-full"><Checkbox name="staff" class="p-3">staff</Checkbox></li>
+        </ul>
+      </Label>
+    </div>
+    <Button type="submit" class="w-full bg-yellow-500 dark:hover:bg-amber-500">Create user</Button>
+  </form>
+</Drawer>
+
 <div class="h-screen w-full flex overflow-hidden">
   <nav class="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
 
@@ -91,7 +149,8 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div
         class="group bg-gray-900/30 py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/40 hover:smooth-hover">
-        <p class="bg-amber-500/70 text-white/50 group-hover:text-white group-hover:smooth-hover flex w-20 h-20 rounded-full items-center justify-center">
+        <p class="bg-amber-500/70 text-white/50 group-hover:text-white group-hover:smooth-hover flex w-20 h-20 rounded-full items-center justify-center"
+        Button on:click={() => (hidden3 = false)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-10 w-10"

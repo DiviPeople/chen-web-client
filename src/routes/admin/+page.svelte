@@ -1,0 +1,164 @@
+<div class="h-screen w-full flex overflow-hidden">
+  <nav class="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
+
+    <div class="flex flex-row border-b items-center justify-between pb-2">
+      <span class="text-lg font-semibold capitalize dark:text-gray-300"> my admin </span>
+    </div>
+
+    <div>
+      <h2 class="mt-6 text-xl dark:text-gray-300 font-extrabold capitalize">Hello d.ivanko</h2>
+      <span class="text-sm dark:text-gray-300">
+        <span class="font-semibold text-green-600 dark:text-green-300"> Admin </span>id789038</span>
+    </div>
+
+    <ul class="mt-2 text-gray-600">
+      <li class="mt-6">
+        <a href="#home" class="flex">
+          <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+            <path
+              d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6
+							4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6
+							4h4v-4h-4M4 8h4V4H4v4z"/>
+          </svg>
+          <span
+            class="ml-2 capitalize font-medium text-black
+						dark:text-gray-300">connections</span>
+        </a>
+      </li>
+
+      <li class="mt-6">
+        <a href="#home" class="flex">
+          <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+            <path
+              d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2
+							2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0
+							00-2-2h-1V1m-1 11h-5v5h5v-5z"/>
+          </svg>
+          <span
+            class="ml-2 capitalize font-medium text-black
+						dark:text-gray-300">reminder</span>
+        </a>
+      </li>
+
+      <li 
+        class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
+				-ml-4">
+        <a href="/admin/users" class="flex pl-4">
+          <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+            <path
+              d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
+							014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
+							8-4z"/>
+          </svg>
+          <span class="ml-2 capitalize font-medium">users</span>
+        </a>
+      </li>
+
+      <li class="mt-6">
+        <a href="/admin/settings" class="flex">
+          <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+            <path
+              d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+							4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
+							9v2h-4v-2h4m2-2h-8v6h8v-6z"/>
+          </svg>
+          <span
+            class="ml-2 capitalize font-medium text-black
+						dark:text-gray-300">settings</span>
+        </a>
+      </li>
+
+      <li class="mt-6 flex items-center text-red-700 dark:text-red-400">
+        <a href="#home" class="flex items-center">
+          <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+            <path
+              d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 012
+              2v2h-2V4H5v16h9v-2h2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2
+              0 012-2h9z"/>
+          </svg>
+          <span class="ml-2 capitalize font-medium">log out</span>
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+  <main
+    class="flex-1 flex flex-col dark:bg-slate-800 transition
+		duration-500 ease-in-out overflow-y-auto">
+
+    <div
+      class="mb-10 px-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <div
+        class="group bg-gray-900/30 py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/40 hover:smooth-hover">
+        <p class="bg-amber-500/70 text-white/50 group-hover:text-white group-hover:smooth-hover flex w-20 h-20 rounded-full items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-10 w-10"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+        </p>
+        <p class="text-white/50 group-hover:text-white group-hover:smooth-hover text-center">Create user</p>
+      </div>
+
+      <div
+        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
+        <img
+          class="w-20 h-20 object-cover object-center rounded-full"
+          src="https://images.unsplash.com/photo-1547592180-85f173990554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+          alt="cuisine"/>
+        <h4 class="text-white text-2xl font-bold capitalize text-center">d.ivanko</h4>
+        <p class="text-white/50">Staff</p>
+      </div> 
+
+      <div
+        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
+        <img
+          class="w-20 h-20 object-cover object-center rounded-full"
+          src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80"
+          alt="art"/>
+        <h4 class="text-white text-2xl font-bold capitalize text-center">n.sirota</h4>
+        <p class="text-white/50">Staff</p>
+      </div>
+
+      <div
+        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
+        <img
+          class="w-20 h-20 object-cover object-center rounded-full"
+          src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          alt="gaming"/>
+        <h4 class="text-white text-2xl font-bold capitalize text-center">d.drozdenko</h4>
+        <p class="text-white/50">Staff</p>
+      </div>
+
+      <div
+        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
+        <img
+          class="w-20 h-20 object-cover object-center rounded-full"
+          src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1159&q=80"
+          alt="cinema"/>
+        <h4 class="text-white text-2xl font-bold capitalize text-center">v.gerasov</h4>
+        <p class="text-white/50">Staff</p>
+      </div>
+
+      <div
+        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
+        <img
+          class="w-20 h-20 object-cover object-center rounded-full"
+          src="https://images.unsplash.com/photo-1484704849700-f032a568e944?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+          alt="song"/>
+        <h4 class="text-white text-2xl font-bold capitalize text-center">k.snoopy</h4>
+        <p class="text-white/50">Staff</p>
+        <p class="absolute top-2 text-white/20 inline-flex items-center text-xs">Online<span class="ml-2 w-2 h-2 block bg-green-500 rounded-full group-hover:animate-pulse"/>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>

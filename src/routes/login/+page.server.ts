@@ -12,7 +12,7 @@ export interface JwtToken {
 }
 
 export const actions = {
-  default: async ({ request, cookies }) => {
+  default: async ({request, cookies}) => {
     const formData = await request.formData()
     const email = formData.get('email')
     const password = formData.get('password')
@@ -26,7 +26,7 @@ export const actions = {
       body: JSON.stringify({
         email: email,
         password: password,
-      })
+      }),
     })
 
     const result = await response.json()
@@ -40,5 +40,5 @@ export const actions = {
         throw redirect(303, `${env.PUBLIC_CLIENT_URL}`)
       }
     }
-  }
-} satisfies Actions;
+  },
+} satisfies Actions

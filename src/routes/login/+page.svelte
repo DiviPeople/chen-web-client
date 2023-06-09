@@ -2,7 +2,9 @@
   import {Card, Button, Label, Input} from 'flowbite-svelte'
 
   let isShown = false
-  function toggle() { isShown = !isShown }
+  function toggle() {
+    isShown = !isShown
+  }
 </script>
 
 <Card class="mt-20 m-auto dark:bg-neutral-900 dark:border-zinc-800">
@@ -16,8 +18,12 @@
       <span>Your password</span>
       <Input type="password" name="password" placeholder="•••••••••" required />
     </Label>
-    <Button type="submit" class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500">Login to your account</Button >
-    <Button class="w-full dark:bg-gray-600 dark:hover:bg-gray-500" on:click={toggle}>Forgot password?</Button>
+    <Button type="submit" class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500"
+      >Login to your account</Button
+    >
+    <Button class="w-full dark:bg-gray-600 dark:hover:bg-gray-500" on:click={toggle}
+      >Forgot password?</Button
+    >
   </form>
 </Card>
 
@@ -29,7 +35,9 @@
         <Label class="space-y-2">
           <Input type="email" name="email" placeholder="name@company.com" required />
         </Label>
-        <Button type="submit" class="w-full dark:bg-gray-600 dark:hover:bg-gray-500">Send password</Button>
+        <Button type="submit" class="w-full dark:bg-gray-600 dark:hover:bg-gray-500"
+          >Send password</Button
+        >
       </form>
     </Card>
   </div>

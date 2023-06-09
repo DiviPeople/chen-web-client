@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     Drawer,
     Button,
@@ -8,6 +8,9 @@
     Checkbox,
   } from 'flowbite-svelte'
   import {sineIn} from 'svelte/easing'
+  import type { PageData } from './$types';
+
+  export let data: PageData;
 
   let hidden3 = true
   let transitionParams = {
@@ -59,14 +62,17 @@
 <div class="h-screen w-full flex overflow-hidden">
   <nav class="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
 
-    <div class="flex flex-row border-b items-center justify-between pb-2">
-      <span class="text-lg font-semibold capitalize dark:text-gray-300"> my admin </span>
-    </div>
-
     <div>
-      <h2 class="mt-6 text-xl dark:text-gray-300 font-extrabold capitalize">Hello d.ivanko</h2>
+      <h2 class="mt-6 text-xl dark:text-gray-300 font-extrabold capitalize">{data.me.full_name}</h2>
       <span class="text-sm dark:text-gray-300">
-        <span class="font-semibold text-green-600 dark:text-green-300"> Admin </span>id789038</span>
+        <span class="font-semibold text-green-600 dark:text-green-300">
+          {#if data.me.is_staff}
+            Staff
+          {:else}
+            Intern
+          {/if}
+        </span>
+      </span>
     </div>
 
     <ul class="mt-2 text-gray-600">
@@ -150,7 +156,7 @@
       <div
         class="group bg-gray-900/30 py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/40 hover:smooth-hover">
         <p class="bg-amber-500/70 text-white/50 group-hover:text-white group-hover:smooth-hover flex w-20 h-20 rounded-full items-center justify-center"
-        Button on:click={() => (hidden3 = false)}>
+        on:click={() => (hidden3 = false)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-10 w-10"
@@ -167,57 +173,20 @@
         <p class="text-white/50 group-hover:text-white group-hover:smooth-hover text-center">Create user</p>
       </div>
 
-      <div
-        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
-        <img
-          class="w-20 h-20 object-cover object-center rounded-full"
-          src="https://images.unsplash.com/photo-1547592180-85f173990554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-          alt="cuisine"/>
-        <h4 class="text-white text-2xl font-bold capitalize text-center">d.ivanko</h4>
-        <p class="text-white/50">Staff</p>
-      </div> 
+      {#each data.users as user}
+        <div
+          class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
+          <h4 class="text-white text-2xl font-bold text-center">{user.full_name}</h4>
+          <p class="text-white/50">
+            {#if user.is_staff}
+              Staff
+            {:else}
+              Intern
+            {/if}
+          </p>
+        </div>
+      {/each}
 
-      <div
-        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
-        <img
-          class="w-20 h-20 object-cover object-center rounded-full"
-          src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80"
-          alt="art"/>
-        <h4 class="text-white text-2xl font-bold capitalize text-center">n.sirota</h4>
-        <p class="text-white/50">Staff</p>
-      </div>
-
-      <div
-        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
-        <img
-          class="w-20 h-20 object-cover object-center rounded-full"
-          src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt="gaming"/>
-        <h4 class="text-white text-2xl font-bold capitalize text-center">d.drozdenko</h4>
-        <p class="text-white/50">Staff</p>
-      </div>
-
-      <div
-        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
-        <img
-          class="w-20 h-20 object-cover object-center rounded-full"
-          src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1159&q=80"
-          alt="cinema"/>
-        <h4 class="text-white text-2xl font-bold capitalize text-center">v.gerasov</h4>
-        <p class="text-white/50">Staff</p>
-      </div>
-
-      <div
-        class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
-        <img
-          class="w-20 h-20 object-cover object-center rounded-full"
-          src="https://images.unsplash.com/photo-1484704849700-f032a568e944?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-          alt="song"/>
-        <h4 class="text-white text-2xl font-bold capitalize text-center">k.snoopy</h4>
-        <p class="text-white/50">Staff</p>
-        <p class="absolute top-2 text-white/20 inline-flex items-center text-xs">Online<span class="ml-2 w-2 h-2 block bg-green-500 rounded-full group-hover:animate-pulse"/>
-        </p>
-      </div>
     </div>
   </main>
 </div>

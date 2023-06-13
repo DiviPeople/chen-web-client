@@ -157,7 +157,7 @@
 		duration-500 ease-in-out overflow-y-auto"
   >
     <div
-      class="mb-10 px-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      class="mb-10 px-10 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div
@@ -189,16 +189,35 @@
 
       {#each data.users as user}
         <div
-          class="relative group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover"
+          class="group relative dark:bg-slate-800 flex flex-col space-y-2 items-center cursor-pointer rounded-md"
         >
-          <h4 class="text-white text-2xl font-bold text-center">{user.full_name}</h4>
-          <p class="text-white/50">
-            {#if user.is_staff}
-              Staff
-            {:else}
-              Intern
-            {/if}
-          </p>
+          <div
+            class="w-full h-full py-10 flex flex-col items-center transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-gray-900"
+          >
+            <div class="[backface-visibility:hidden]">
+              <h4 class="text-white text-2xl font-bold text-center mb-2">{user.user_name}</h4>
+              <div class="flex w-20 h-20 mx-auto mb-4">
+                <img class="rounded-full w-full h-full" src="" alt="" />
+              </div>
+              <h4 class="text-white text-xl font-bold text-center">{user.full_name}</h4>
+              <p class="text-white/50 text-center">
+                {#if user.is_staff}
+                  Staff
+                {:else}
+                  Intern
+                {/if}
+              </p>
+            </div>
+            <div
+              class="absolute bottom-0 pb-4 w-full px-4 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+            >
+              <div class="flex w-20 h-20 mx-auto mb-10">
+                <img class="rounded-full w-full h-full" src="" alt="" />
+              </div>
+              <Button class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500 mb-2">Edit</Button>
+              <Button class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500">Delete</Button>
+            </div>
+          </div>
         </div>
       {/each}
     </div>

@@ -5,7 +5,10 @@
 
   export let data: PageData
 
+  let user_name: string
+  let full_name: string
   let hidden3 = true
+  let hidden_del = true
   let transitionParams = {
     x: -320,
     duration: 200,
@@ -59,6 +62,43 @@
       </Label>
     </div>
     <Button type="submit" class="w-full bg-yellow-500 dark:hover:bg-amber-500">Create user</Button>
+  </form>
+</Drawer>
+
+<Drawer transitionType="fly" {transitionParams} bind:hidden={hidden_del} id="user_deletion">
+  <div class="flex items-center">
+    <h5
+      id="drawer-label"
+      class="inline-flex items-center mb-6 text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
+    >
+      <svg
+        class="w-5 h-5 mr-2"
+        aria-hidden="true"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          fill-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          clip-rule="evenodd"
+        /></svg
+      >Delete user
+    </h5>
+
+    <CloseButton on:click={() => (hidden_del = true)} class="mb-4 dark:text-white" />
+  </div>
+
+  <form method="POST" action="?/delete_user" class="mb-6">
+    <p class="text-white mb-4">Are you sure you want to delete this user?</p>
+    <div class="mb-6">
+      <Label class="block mb-2">Login</Label>
+      <Input readonly name="delete_login" value={user_name} />
+    </div>
+    <div class="mb-6">
+      <Label class="block mb-2">Full Name</Label>
+      <Input readonly name="delete_name" value={full_name} />
+    </div>
+    <Button type="submit" class="w-full bg-yellow-500 dark:hover:bg-amber-500">Delete user</Button>
   </form>
 </Drawer>
 
@@ -219,7 +259,14 @@
                 <img class="rounded-full w-full h-full" src="" alt="" />
               </div>
               <Button class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500 mb-2">Edit</Button>
-              <Button class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500">Delete</Button>
+              <Button
+                on:click={() => {
+                  hidden_del = false
+                  user_name = user.user_name
+                  full_name = user.full_name
+                }}
+                class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500">Delete</Button
+              >
             </div>
           </div>
         </div>

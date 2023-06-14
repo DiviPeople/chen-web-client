@@ -35,7 +35,7 @@
 
     <CloseButton on:click={() => (hidden3 = true)} class="mb-4 dark:text-white" />
   </div>
-  <form method="POST" action="?/users" class="mb-6">
+  <form method="POST" action="?/create_user" class="mb-6">
     <div class="mb-6">
       <Label class="block mb-2">Login</Label>
       <Input type="text" name="login" required placeholder="d.ivanko" />
@@ -43,6 +43,10 @@
     <div class="mb-6">
       <Label class="block mb-2">Email</Label>
       <Input type="email" name="email" required placeholder="example@gmail.com" />
+    </div>
+    <div class="mb-6">
+      <Label class="block mb-2">Full Name</Label>
+      <Input type="text" name="full_name" required placeholder="Dmitry Ivanko" />
     </div>
     <div class="mb-6">
       <Label class="space-y-2">

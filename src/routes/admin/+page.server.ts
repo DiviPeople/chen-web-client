@@ -1,22 +1,27 @@
-import type {RequestEvent} from '@sveltejs/kit'
+import type {Actions, RequestEvent} from '@sveltejs/kit'
+import {env} from '$env/dynamic/public'
 
 export const actions = {
-  users: async ({request}: RequestEvent) => {
+  create_user: async ({request, cookies}: RequestEvent) => {
     const formData = await request.formData()
-    const email = formData.get('email')
-    const full_name = formData.get('login')
-    const is_staff = formData.has('staff')
+    const token = cookies.get('token')
 
-    let response = await fetch('http://localhost:8080/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        full_name: full_name,
-        is_staff: is_staff,
-      }),
-    })
+    if (typeof token === 'string') {
+      await fetch(`${env.PUBLIC_API_URL}/user`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: `token=${token}`,
+        },
+        body: JSON.stringify({
+          email: formData.get('email'),
+          user_name: formData.get('login'),
+          full_name: formData.get('full_name'),
+          is_staff: formData.has('staff'),
+          is_superuser: false,
+        }),
+      })
+    }
   },
-}
+} satisfies Actions

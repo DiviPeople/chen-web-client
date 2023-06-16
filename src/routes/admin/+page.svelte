@@ -103,7 +103,7 @@
 </Drawer>
 
 <div class="h-screen w-full flex overflow-hidden">
-  <nav class="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
+  <nav class="hidden lg:flex lg:flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
     <div>
       <h2 class="mt-6 text-xl dark:text-gray-300 font-extrabold capitalize">{data.me.full_name}</h2>
       <span class="text-sm dark:text-gray-300">
@@ -201,15 +201,15 @@
 		duration-500 ease-in-out overflow-y-auto"
   >
     <div
-      class="mb-10 px-10 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      class="px-10 mt-5 mb-16 lg:grid md:grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div
-        class="group bg-gray-900/30 py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/40 hover:smooth-hover"
+        class="group bg-gray-900/30 px-4 py-4 mb-4 flex lg:flex-col md:flex-col md:h-full md:pt-14 lg:pt-16 space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/40 hover:smooth-hover"
+        on:click={() => (hidden3 = false)}
       >
         <p
-          class="bg-amber-500/70 text-white/50 group-hover:text-white group-hover:smooth-hover flex w-20 h-20 rounded-full items-center justify-center"
-          on:click={() => (hidden3 = false)}
+          class="bg-amber-500/70 text-white/50 group-hover:text-white group-hover:smooth-hover flex w-14 h-14 lg:w-20 lg:h-20 rounded-full items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -226,21 +226,23 @@
             />
           </svg>
         </p>
-        <p class="text-white/50 group-hover:text-white group-hover:smooth-hover text-center">
+        <p
+          class="ml-4 lg:ml-0 md:ml-0 pb-2 text-white/50 group-hover:text-white group-hover:smooth-hover"
+        >
           Create user
         </p>
       </div>
 
       {#each data.users as user}
         <div
-          class="group relative dark:bg-slate-800 flex flex-col space-y-2 items-center cursor-pointer rounded-md"
+          class="mb-4 md:mb-0 lg:mb-0 lg:h-full group relative dark:bg-slate-800 flex flex-col space-y-2 items-center cursor-pointer rounded-md"
         >
           <div
-            class="w-full h-full py-10 flex flex-col items-center transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-gray-900"
+            class="w-full py-5 h-full flex flex-col items-center transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-gray-900"
           >
             <div class="[backface-visibility:hidden]">
               <h4 class="text-white text-2xl font-bold text-center mb-2">{user.user_name}</h4>
-              <div class="flex w-20 h-20 mx-auto mb-4">
+              <div class="flex w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4">
                 <img class="rounded-full w-full h-full" src="" alt="" />
               </div>
               <h4 class="text-white text-xl font-bold text-center">{user.full_name}</h4>
@@ -253,20 +255,26 @@
               </p>
             </div>
             <div
-              class="absolute bottom-0 pb-4 w-full px-4 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+              class="flex flex-col absolute bottom-0 pb-4 w-full px-4 [transform:rotateY(180deg)] [backface-visibility:hidden]"
             >
-              <div class="flex w-20 h-20 mx-auto mb-10">
+              <div class="flex w-20 h-20 lg:w-20 lg:h-20 mx-auto lg:mb-6 mb-10">
                 <img class="rounded-full w-full h-full" src="" alt="" />
               </div>
-              <Button class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500 mb-2">Edit</Button>
-              <Button
-                on:click={() => {
-                  hidden_del = false
-                  user_name = user.user_name
-                  full_name = user.full_name
-                }}
-                class="w-full dark:bg-yellow-500 dark:hover:bg-amber-500">Delete</Button
-              >
+              <div class="flex lg:block">
+                <Button
+                  class="w-1/2 h-1/2 lg:w-full lg:h-full dark:bg-yellow-500 dark:hover:bg-amber-500 mr-1 lg:mb-2 lg:mr-0"
+                  >Edit</Button
+                >
+                <Button
+                  on:click={() => {
+                    hidden_del = false
+                    user_name = user.user_name
+                    full_name = user.full_name
+                  }}
+                  class="w-1/2 h-1/2 lg:w-full lg:h-full dark:bg-yellow-500 dark:hover:bg-amber-500 ml-1 lg:ml-0"
+                  >Delete</Button
+                >
+              </div>
             </div>
           </div>
         </div>

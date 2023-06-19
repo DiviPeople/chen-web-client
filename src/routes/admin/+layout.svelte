@@ -3,6 +3,7 @@
   import {Button, CloseButton, Drawer, Navbar, NavBrand} from 'flowbite-svelte'
   import {sineIn} from 'svelte/easing'
   import type {LayoutData} from './$types'
+  import {env} from '$env/dynamic/public'
 
   export let data: LayoutData
 
@@ -12,6 +13,12 @@
     x: -320,
     duration: 200,
     easing: sineIn,
+  }
+
+  const logout = async () => {
+    await fetch(`${env.PUBLIC_API_URL}/logout`, {
+      credentials: 'include',
+    })
   }
 </script>
 
@@ -101,8 +108,8 @@
         </a>
       </li>
 
-      <li class="mt-6 flex items-center text-red-700 dark:text-red-400">
-        <a href="#home" class="flex items-center">
+      <li class="absolute bottom-0 mb-10 mt-6 flex items-center text-red-700 dark:text-red-400">
+        <a on:click={logout} href="/login" class="flex items-center">
           <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
             <path
               d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 012
@@ -227,8 +234,8 @@
         </a>
       </li>
 
-      <li class="mt-6 flex items-center text-red-700 dark:text-red-400">
-        <a href="#home" class="flex items-center">
+      <li class="absolute bottom-0 mb-10 mt-6 flex items-center text-red-700 dark:text-red-400">
+        <a on:click={logout} href="/login" class="flex items-center">
           <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
             <path
               d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 012

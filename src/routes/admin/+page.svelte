@@ -141,50 +141,67 @@
       </div>
 
       {#each data.users as user}
-        <div
-          class="mb-4 md:mb-0 lg:mb-0 lg:h-full group relative dark:bg-slate-800 flex flex-col space-y-2 items-center cursor-pointer rounded-md"
-        >
+        {#if user.email == data.me.email}
           <div
-            class="w-full py-5 h-full flex flex-col items-center transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-gray-900"
+            class="mb-4 md:mb-0 lg:mb-0 lg:h-full group relative dark:bg-slate-800 flex flex-col space-y-2 items-center rounded-md"
           >
-            <div class="[backface-visibility:hidden]">
-              <h4 class="text-white text-2xl font-bold text-center mb-2">{user.user_name}</h4>
-              <div class="flex w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4">
-                <img class="rounded-full w-full h-full" src="" alt="" />
-              </div>
-              <h4 class="text-white text-xl font-bold text-center">{user.full_name}</h4>
-              <p class="text-white/50 text-center">
-                {#if user.is_staff}
-                  Staff
-                {:else}
-                  Intern
-                {/if}
-              </p>
-            </div>
-            <div
-              class="flex flex-col absolute bottom-0 pb-4 w-full px-4 [transform:rotateY(180deg)] [backface-visibility:hidden]"
-            >
-              <div class="flex w-20 h-20 lg:w-20 lg:h-20 mx-auto lg:mb-6 mb-10">
-                <img class="rounded-full w-full h-full" src="" alt="" />
-              </div>
-              <div class="flex lg:block">
-                <Button
-                  class="w-1/2 h-1/2 lg:w-full lg:h-full dark:bg-yellow-500 dark:hover:bg-amber-500 mr-1 lg:mb-2 lg:mr-0"
-                  >Edit</Button
-                >
-                <Button
-                  on:click={() => {
-                    hidden_del = false
-                    user_name = user.user_name
-                    full_name = user.full_name
-                  }}
-                  class="w-1/2 h-1/2 lg:w-full lg:h-full dark:bg-yellow-500 dark:hover:bg-amber-500 ml-1 lg:ml-0"
-                  >Delete</Button
-                >
+            <div class="w-full py-5 h-full flex flex-col items-center bg-gray-900">
+              <div class="[backface-visibility:hidden]">
+                <h4 class="text-white text-2xl font-bold text-center mb-2">{user.user_name}</h4>
+                <div class="flex w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4">
+                  <img class="rounded-full w-full h-full" src="" alt="" />
+                </div>
+                <h4 class="text-white text-xl font-bold text-center">{user.full_name}</h4>
+                <p class="text-white/50 text-center">Staff (You)</p>
               </div>
             </div>
           </div>
-        </div>
+        {:else}
+          <div
+            class="mb-4 md:mb-0 lg:mb-0 lg:h-full group relative dark:bg-slate-800 flex flex-col space-y-2 items-center cursor-pointer rounded-md"
+          >
+            <div
+              class="w-full py-5 h-full flex flex-col items-center transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-gray-900"
+            >
+              <div class="[backface-visibility:hidden]">
+                <h4 class="text-white text-2xl font-bold text-center mb-2">{user.user_name}</h4>
+                <div class="flex w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4">
+                  <img class="rounded-full w-full h-full" src="" alt="" />
+                </div>
+                <h4 class="text-white text-xl font-bold text-center">{user.full_name}</h4>
+                <p class="text-white/50 text-center">
+                  {#if user.is_staff}
+                    Staff
+                  {:else}
+                    Intern
+                  {/if}
+                </p>
+              </div>
+              <div
+                class="flex flex-col absolute bottom-0 pb-4 w-full px-4 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+              >
+                <div class="flex w-20 h-20 lg:w-20 lg:h-20 mx-auto lg:mb-6 mb-10">
+                  <img class="rounded-full w-full h-full" src="" alt="" />
+                </div>
+                <div class="flex lg:block">
+                  <Button
+                    class="w-1/2 h-1/2 lg:w-full lg:h-full dark:bg-yellow-500 dark:hover:bg-amber-500 mr-1 lg:mb-2 lg:mr-0"
+                    >Edit</Button
+                  >
+                  <Button
+                    on:click={() => {
+                      hidden_del = false
+                      user_name = user.user_name
+                      full_name = user.full_name
+                    }}
+                    class="w-1/2 h-1/2 lg:w-full lg:h-full dark:bg-yellow-500 dark:hover:bg-amber-500 ml-1 lg:ml-0"
+                    >Delete</Button
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        {/if}
       {/each}
     </div>
   </main>

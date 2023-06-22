@@ -1,9 +1,12 @@
 <script lang="ts">
   import '../../app.css'
+
   import {Button, CloseButton, Drawer, Navbar, NavBrand} from 'flowbite-svelte'
   import {sineIn} from 'svelte/easing'
-  import type {LayoutData} from './$types'
+
   import {env} from '$env/dynamic/public'
+
+  import type {LayoutData} from './$types'
 
   export let data: LayoutData
 

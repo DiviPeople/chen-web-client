@@ -1,6 +1,8 @@
-import type {LayoutLoad} from './$types'
-import {env} from '$env/dynamic/public'
 import {redirect} from '@sveltejs/kit'
+
+import {env} from '$env/dynamic/public'
+
+import type {LayoutLoad} from './$types'
 
 export const load = (async ({fetch}) => {
   const me = async () => {

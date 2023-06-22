@@ -1,5 +1,6 @@
 <script>
   import '../../app.css'
+
   import {Navbar, NavBrand} from 'flowbite-svelte'
 </script>
 

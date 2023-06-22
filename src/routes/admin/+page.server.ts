@@ -1,4 +1,5 @@
 import type {Actions, RequestEvent} from '@sveltejs/kit'
+
 import {env} from '$env/dynamic/public'
 
 export const actions = {

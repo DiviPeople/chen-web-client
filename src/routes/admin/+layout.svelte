@@ -1,9 +1,12 @@
 <script lang="ts">
   import '../../app.css'
+
   import {Button, CloseButton, Drawer, Input, Navbar, NavBrand} from 'flowbite-svelte'
   import {sineIn} from 'svelte/easing'
-  import type {LayoutData} from './$types'
+
   import {env} from '$env/dynamic/public'
+
+  import type {LayoutData} from './$types'
 
   export let data: LayoutData
 
@@ -335,7 +338,8 @@
                   {data.me.user_name}
                 </h1>
                 <span
-                  class="bg-amber-500 text-yellow-800 text-sm font-medium lg:py-1.5 md:py-1.5 lg:px-3 md:px-3 py-1 px-2 mt-1 dark:bg-yellow-500 dark:text-yellow-100"
+                  class="bg-amber-500 text-yellow-800 text-sm font-medium lg:py-1.5 md:py-1.5
+                  lg:px-3 md:px-3 py-1 px-2 mt-1 dark:bg-yellow-500 dark:text-yellow-100"
                   >Staff</span
                 >
               </div>

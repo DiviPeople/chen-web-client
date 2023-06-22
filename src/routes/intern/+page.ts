@@ -1,5 +1,6 @@
-import type {PageLoad} from './$types'
 import {env} from '$env/dynamic/public'
+
+import type {PageLoad} from './$types'
 
 export const load = (async ({fetch}) => {
   const users = async () => {

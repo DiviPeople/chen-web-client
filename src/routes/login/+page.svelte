@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Card, Button, Label, Input} from 'flowbite-svelte'
+  import {Button, Card, Input, Label} from 'flowbite-svelte'
 
   let isShown = false
   function toggle() {

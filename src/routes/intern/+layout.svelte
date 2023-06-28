@@ -1,6 +1,6 @@
 <script lang="ts">
   import '../../app.css'
-  import {Button, CloseButton, Drawer, Navbar, NavBrand} from 'flowbite-svelte'
+  import {Button, CloseButton, Drawer, Input, Navbar, NavBrand} from 'flowbite-svelte'
   import {sineIn} from 'svelte/easing'
   import type {LayoutData} from './$types'
   import {env} from '$env/dynamic/public'
@@ -8,6 +8,7 @@
   export let data: LayoutData
 
   let showMenu = true
+  let tabSwitch = true
 
   let transitionParams = {
     x: -320,
@@ -76,37 +77,71 @@
         </a>
       </li>
 
-      <li
-        class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
+      {#if tabSwitch}
+        <li
+          class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
         -ml-4"
-      >
-        <a href="/intern" class="flex pl-4">
-          <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
-            <path
-              d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
+        >
+          <a href="/intern" class="flex pl-4">
+            <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+              <path
+                d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
                 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
                 8-4z"
-            />
-          </svg>
-          <span class="ml-2 capitalize font-medium">users</span>
-        </a>
-      </li>
+              />
+            </svg>
+            <span class="ml-2 capitalize font-medium">users</span>
+          </a>
+        </li>
 
-      <li class="mt-6">
-        <a href="/intern/settings" class="flex">
-          <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
-            <path
-              d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+        <li class="mt-6" on:click={() => (tabSwitch = false)} on:keydown>
+          <a href="/intern" class="flex">
+            <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+              <path
+                d="M12 13H7v5h5v2H5V10h2v1h5v2M8
                 4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
                 9v2h-4v-2h4m2-2h-8v6h8v-6z"
-            />
-          </svg>
-          <span
-            class="ml-2 capitalize font-medium text-black
+              />
+            </svg>
+            <span
+              class="ml-2 capitalize font-medium text-black
               dark:text-gray-300">settings</span
-          >
-        </a>
-      </li>
+            >
+          </a>
+        </li>
+      {:else}
+        <li class="mt-6" on:click={() => (tabSwitch = true)} on:keydown>
+          <a href="/intern" class="flex">
+            <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+              <path
+                d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+                4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
+                9v2h-4v-2h4m2-2h-8v6h8v-6z"
+              />
+            </svg>
+            <span
+              class="ml-2 capitalize font-medium text-black
+              dark:text-gray-300">users</span
+            >
+          </a>
+        </li>
+
+        <li
+          class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
+        -ml-4"
+        >
+          <a href="/intern" class="flex pl-4">
+            <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+              <path
+                d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
+                014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
+                8-4z"
+              />
+            </svg>
+            <span class="ml-2 capitalize font-medium">settings</span>
+          </a>
+        </li>
+      {/if}
 
       <li class="absolute bottom-0 mb-10 mt-6 flex items-center text-red-700 dark:text-red-400">
         <a on:click={logout} href="/login" class="flex items-center">
@@ -201,41 +236,74 @@
           >
         </a>
       </li>
-
-      <li
-        class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
+      {#if tabSwitch}
+        <li
+          class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
         -ml-4"
-      >
-        <a href="/intern" class="flex pl-4">
-          <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
-            <path
-              d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
+        >
+          <a href="/intern" class="flex pl-4">
+            <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+              <path
+                d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
                 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
                 8-4z"
-            />
-          </svg>
-          <span class="ml-2 capitalize font-medium">users</span>
-        </a>
-      </li>
+              />
+            </svg>
+            <span class="ml-2 capitalize font-medium">users</span>
+          </a>
+        </li>
 
-      <li class="mt-6">
-        <a href="/intern/settings" class="flex">
-          <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
-            <path
-              d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+        <li class="mt-6" on:click={() => (tabSwitch = false)} on:keydown>
+          <a href="/intern" class="flex">
+            <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+              <path
+                d="M12 13H7v5h5v2H5V10h2v1h5v2M8
                 4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
                 9v2h-4v-2h4m2-2h-8v6h8v-6z"
-            />
-          </svg>
-          <span
-            class="ml-2 capitalize font-medium text-black
+              />
+            </svg>
+            <span
+              class="ml-2 capitalize font-medium text-black
               dark:text-gray-300">settings</span
-          >
-        </a>
-      </li>
+            >
+          </a>
+        </li>
+      {:else}
+        <li class="mt-6" on:click={() => (tabSwitch = true)} on:keydown>
+          <a href="/intern" class="flex">
+            <svg class="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
+              <path
+                d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+                4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
+                9v2h-4v-2h4m2-2h-8v6h8v-6z"
+              />
+            </svg>
+            <span
+              class="ml-2 capitalize font-medium text-black
+              dark:text-gray-300">users</span
+            >
+          </a>
+        </li>
+
+        <li
+          class="mt-6 shadow dark:bg-gray-200 py-2 rounded-lg
+        -ml-4"
+        >
+          <a href="/intern" class="flex pl-4">
+            <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+              <path
+                d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
+                014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
+                8-4z"
+              />
+            </svg>
+            <span class="ml-2 capitalize font-medium">settings</span>
+          </a>
+        </li>
+      {/if}
 
       <li class="absolute bottom-0 mb-10 mt-6 flex items-center text-red-700 dark:text-red-400">
-        <a on:click={logout} href="/login" class="flex items-center">
+        <a href="/login" class="flex items-center">
           <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
             <path
               d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 012
@@ -252,6 +320,81 @@
     class="flex-1 flex flex-col dark:bg-slate-800 transition
 		duration-500 ease-in-out overflow-y-auto"
   >
-    <slot />
+    {#if tabSwitch}
+      <slot />
+    {:else}
+      <div class="lg:px-10 md:px-8 px-4 mt-5 lg:mb-8 md:mb-6 mb-4">
+        <div class="md:mb-0 lg:mb-0 h-full dark:bg-gray-900 space-y-2 rounded-md">
+          <div class="flex flex-col lg:py-8 md:py-8 py-4 lg:px-8 md:px-8 px-4 w-full">
+            <div class="flex items-center lg:mb-14 md:mb-12 mb-8">
+              <div class="mr-6">
+                <img class="rounded-full w-16 h-16 lg:w-36 lg:h-36 md:w-28 md:h-28" src="" alt="" />
+              </div>
+              <div class="flex items-center w-full">
+                <h1 class="text-white text-2xl lg:text-4xl md:text-4xl font-bold mr-4">
+                  {data.me.user_name}
+                </h1>
+                <span
+                  class="bg-amber-500 text-yellow-800 text-sm font-medium lg:py-1.5 md:py-1.5 lg:px-3 md:px-3 py-1 px-2 mt-1 dark:bg-yellow-500 dark:text-yellow-100"
+                  >Intern</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col lg:flex-row md:flex-row">
+              <!-- profile info block -->
+              <div class="flex flex-col w-full lg:w-1/2 lg:mr-8 md:w-1/2 md:mr-8 mb-10">
+                <h2 class="text-white lg:text-2xl md:text-2xl text-xl font-semibold mb-3">
+                  Your Profile
+                </h2>
+                <hr class="border-gray-700 mb-4" />
+                <div class="lg:mb-6 md:mb-6 mb-4">
+                  <p class="text-white mb-2">Full Name</p>
+                  <Input
+                    class="py-2"
+                    type="text"
+                    name="full_name"
+                    required
+                    value={data.me.full_name}
+                  />
+                </div>
+                <div class="lg:mb-6 md:mb-6 mb-4">
+                  <p class="text-white mb-2">Email</p>
+                  <Input class="py-2" type="email" name="email" required value={data.me.email} />
+                </div>
+                <div>
+                  <Button type="submit" class="bg-yellow-500 dark:hover:bg-amber-500"
+                    >Update profile</Button
+                  >
+                </div>
+              </div>
+              <!-- profile password block -->
+              <div class="flex flex-col w-full lg:w-1/2 lg:ml-8 md:w-1/2 md:ml-8">
+                <h2 class="text-white lg:text-2xl md:text-2xl text-xl font-semibold mb-3">
+                  Change Password
+                </h2>
+                <hr class="border-gray-700 mb-4" />
+                <div class="lg:mb-6 md:mb-6 mb-4">
+                  <p class="text-white mb-2">Old Password</p>
+                  <Input class="py-2" type="password" name="old_pass" required />
+                </div>
+                <div class="lg:mb-6 md:mb-6 mb-4">
+                  <p class="text-white mb-2">New Password</p>
+                  <Input class="py-2" type="password" name="new_pass" required />
+                </div>
+                <div class="lg:mb-6 md:mb-6 mb-4">
+                  <p class="text-white mb-2">Confirm New Password</p>
+                  <Input class="py-2" type="password" name="conf_new_pass" required />
+                </div>
+                <div>
+                  <Button type="submit" class=" bg-yellow-500 dark:hover:bg-amber-500"
+                    >Update password</Button
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/if}
   </main>
 </div>

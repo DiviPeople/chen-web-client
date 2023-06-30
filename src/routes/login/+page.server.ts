@@ -37,7 +37,7 @@ export const actions = {
       if (decoded.is_staff) {
         throw redirect(303, `${env.PUBLIC_CLIENT_URL}/admin`)
       } else {
-        throw redirect(303, `${env.PUBLIC_CLIENT_URL}`)
+        throw redirect(303, `${env.PUBLIC_CLIENT_URL}/intern`)
       }
     }
   },
